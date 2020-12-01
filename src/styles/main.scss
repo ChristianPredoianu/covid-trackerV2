@@ -1,10 +1,125 @@
-//Testing scss styles
-$bg: blue;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-body {
-  background: $bg;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img {
-  padding-bottom: 50rem;
+html {
+  //This defines 1rem (10px) 62,5% of initial 16px
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ececec;
+}
+
+.header {
+  background-color: #0b0069;
+  padding: 1.5rem 0;
+  border-bottom: 0.1rem solid #353434;
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 4rem;
+  }
+
+  &__logo-img {
+    width: 3%;
+  }
+
+  &__logo-text {
+    color: #fff;
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+}
+
+.section-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0b0069;
+  padding: 10rem 0 14rem 0;
+  color: #e7e7e7;
+
+  &__container-left {
+    width: 50%;
+    padding: 0 4rem;
+  }
+
+  &__heading {
+    font-size: 3.5rem;
+    padding: 2rem 0;
+  }
+
+  &__paragraph {
+    font-size: 2rem;
+    padding: 2rem 0 3rem 0;
+  }
+
+  &__btn {
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      transform: translateY(0.2rem);
+      box-shadow: 5px 4px 19px -1px rgba(255, 255, 255, 0.64);
+    }
+
+    &--red {
+      background-color: rgb(175, 3, 3);
+      padding: 1.1rem;
+      border: none;
+      border: 0.1rem solid #0b0069;
+    }
+
+    &--neutral {
+      background-color: #0b0069;
+      padding: 1rem;
+      border: 0.1rem solid #fff;
+      margin-left: 1rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__container-right {
+    width: 50%;
+  }
+
+  &__img {
+    display: block;
+    margin: auto;
+    width: 50%;
+  }
+}
+
+.stats-overview {
+  display: flex;
+  justify-content: space-around;
+
+  background-color: rgb(255, 255, 255);
+  width: 90%;
+  margin: 0 auto;
+  margin-top: -5rem;
+  padding: 5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 5px 4px 19px -1px rgba(0, 0, 0, 0.64);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__img {
+    width: 20%;
+  }
 }

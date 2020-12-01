@@ -1,7 +1,6 @@
-// Testing webpack js
-import { Person } from './person';
+import CovidData from './covidData';
 import './styles/main.scss';
 
-const christian = new Person('Christian', 34);
+const covData = new CovidData();
 
-christian.getInfo();
+covData.getWorld();
