@@ -98,6 +98,7 @@ html {
     display: block;
     margin: auto;
     width: 50%;
+    animation: spin 30s linear infinite;
   }
 }
 
@@ -121,5 +122,78 @@ html {
 
   &__img {
     width: 20%;
+  }
+
+  &__paragraph {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  &__stats {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.additional-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 10rem;
+
+  &__container-left {
+    background-color: #fff;
+    width: 70%;
+  }
+
+  &__box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding-bottom: 3rem;
+    margin-top: 3rem;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    background-color: rgb(129, 181, 230);
+    margin: 2rem 3rem;
+    padding: 5rem 2rem 2rem 2rem;
+  }
+
+  &__img {
+    position: absolute;
+    width: 30%;
+    top: -22%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__stats {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  &__paragraph {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  &__container-right {
+    background-color: aquamarine;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
   }
 }
