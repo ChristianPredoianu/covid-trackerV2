@@ -46,7 +46,7 @@
       <div class="stats-overview__container">
         <img src="images/world.png" alt="" class="stats-overview__img" />
         <p class="stats-overview__paragraph">Stats overview</p>
-        <p class="stats-overview__stats">Global</p>
+        <p class="stats-overview__stats" id="stats-country"></p>
       </div>
       <div class="stats-overview__container">
         <img
@@ -55,7 +55,7 @@
           class="stats-overview__img"
         />
         <p class="stats-overview__paragraph">Total Cases</p>
-        <p class="stats-overview__stats">1202035</p>
+        <p class="stats-overview__stats" id="total-cases"></p>
       </div>
       <div class="stats-overview__container">
         <img
@@ -64,7 +64,7 @@
           class="stats-overview__img"
         />
         <p class="stats-overview__paragraph">Total Recovered</p>
-        <p class="stats-overview__stats">415165</p>
+        <p class="stats-overview__stats" id="total-recovered"></p>
       </div>
       <div class="stats-overview__container">
         <img
@@ -73,12 +73,13 @@
           class="stats-overview__img"
         />
         <p class="stats-overview__paragraph">Total Deaths</p>
-        <p class="stats-overview__stats">15613215</p>
+        <p class="stats-overview__stats" id="total-deaths"></p>
       </div>
     </section>
 
     <section class="additional-info">
       <div class="additional-info__container-left">
+        <h2 class="additional-info__heading">Additional info:</h2>
         <div class="additional-info__box-container">
           <div class="additional-info__card">
             <img
@@ -87,25 +88,75 @@
               class="additional-info__img"
             />
             <div class="additional-info__box">
-              <p class="additional-info__stats">1000000</p>
+              <p class="additional-info__stats" id="cases-today"></p>
               <p class="additional-info__paragraph">Cases Today</p>
             </div>
           </div>
-          <div class="additional-info__card">
+          <div class="additional-info__card additional-info__card--deaths">
+            <img
+              src="images/memorial.png"
+              alt=""
+              class="additional-info__img"
+            />
+            <div class="additional-info__box">
+              <p class="additional-info__stats" id="deaths-today"></p>
+              <p class="additional-info__paragraph">Deaths Today</p>
+            </div>
+          </div>
+          <div class="additional-info__card additional-info__card--intensive">
+            <img
+              src="images/hospital.png"
+              alt=""
+              class="additional-info__img"
+            />
+            <div class="additional-info__box">
+              <p class="additional-info__stats" id="intensive-care"></p>
+              <p class="additional-info__paragraph">Intensive Care</p>
+            </div>
+          </div>
+          <div class="additional-info__card additional-info__card--cases-mil">
             <img
               src="images/calendar.png"
               alt=""
-              class="additional-info__img additional-info__img--deaths"
+              class="additional-info__img"
             />
             <div class="additional-info__box">
-              <p class="additional-info__stats">1000000</p>
-              <p class="additional-info__paragraph">Cases Today</p>
+              <p class="additional-info__stats" id="cases-mil"></p>
+              <p class="additional-info__paragraph">Cases/1 Million</p>
+            </div>
+          </div>
+          <div class="additional-info__card additional-info__card--deaths-mil">
+            <img
+              src="images/memorial.png"
+              alt=""
+              class="additional-info__img"
+            />
+            <div class="additional-info__box">
+              <p class="additional-info__stats" id="deaths-mil"></p>
+              <p class="additional-info__paragraph">Deaths/1 Million</p>
             </div>
           </div>
         </div>
       </div>
       <div class="additional-info__container-right">
-        <img src="images/calendar.png" alt="" />
+        <div class="wrapper" id="wrapper">
+          <input
+            class="wrapper__input"
+            type="text"
+            id="country-input"
+            name="name"
+            required
+            placeholder="Filter to a country"
+          />
+          <!--   <div class="wrapper__country-box">
+            <img
+              src="images/united-states-of-america.svg"
+              alt=""
+              class="wrapper__country-img"
+            />
+            <p class="wrapper__country-paragraph">United states</p>
+          </div> -->
+        </div>
       </div>
     </section>
   </body>
