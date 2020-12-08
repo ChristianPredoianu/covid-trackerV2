@@ -9,6 +9,8 @@ export default class Ui {
     this.intensiveCare = document.querySelector('#intensive-care');
     this.casesPerMil = document.querySelector('#cases-mil');
     this.deathsPerMil = document.querySelector('#deaths-mil');
+    this.wrapper = document.querySelector('#wrapper');
+    this.wrapperInner = document.querySelector('.wrapper__inner');
     this.input = document.querySelector('.wrapper__input');
   }
 
@@ -28,48 +30,74 @@ export default class Ui {
       data[0].deathsPerOneMillion
     );
   }
-  //Create top ten country cards
-  createCountryCards(data) {
-    const wrapper = document.querySelector('#wrapper');
-    const countries = data.slice(0, 10);
 
-    countries.forEach((country) => {
-      const card = document.createElement('div');
-      card.classList.add('wrapper__country-box');
-      wrapper.appendChild(card);
-      const img = document.createElement('IMG');
-      img.classList.add('wrapper__country-img');
-      img.src = 'img/src/images/united-states-of-america.svg';
-      card.appendChild(img);
-      const paragraph = document.createElement('p');
-      paragraph.classList.add('wrapper__country-paragraph');
-      paragraph.textContent = country.country;
-      card.appendChild(paragraph);
+  //Show all countries
+  showData(data) {
+    console.log(data);
+    data.forEach((country) => {
+      this.createCard(country);
     });
   }
-  filterCountries(data) {
-    this.input.addEventListener('keyup', (e) => {
-      console.log(e.target.value);
 
-      let filteredCountries = data.filter((country) => {
-        return country.country.toLowerCase() === e.target.value.toLowerCase();
-      });
+  //Show filtered countries
+  filterData(data, search) {
+    this.wrapperInner.innerHTML = '';
+    let filtered = data.filter((country) => {
+      return country.country.toLowerCase().includes(search.toLowerCase());
+    });
+    filtered.forEach((country) => {
+      this.createCard(country);
+    });
+  }
 
-      let found = filteredCountries;
+  //Create the country card
+  createCard(country) {
+    let addData = {};
+    let id = 0;
+    const card = document.createElement('div');
+    card.classList.add('wrapper__country-box');
+    this.wrapperInner.appendChild(card);
+    const img = document.createElement('IMG');
+    img.classList.add('wrapper__country-img');
+    if (country.country === 'World') {
+      img.src = `../dist/img/src/images/World.png`;
+    } else {
+      img.src = `../dist/img/src/images/flags/${country.country}.svg`;
+    }
+    card.appendChild(img);
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('wrapper__country-paragraph');
+    paragraph.textContent = country.country;
+    card.appendChild(paragraph);
 
-      if (found.length > 0) {
-        const card = document.createElement('div');
-        card.classList.add('wrapper__country-box');
-        wrapper.appendChild(card);
-        const img = document.createElement('IMG');
-        img.classList.add('wrapper__country-img');
-        img.src = 'img/src/images/united-states-of-america.svg';
-        card.appendChild(img);
-        const paragraph = document.createElement('p');
-        paragraph.classList.add('wrapper__country-paragraph');
-        paragraph.textContent = found[0].country;
-        card.appendChild(paragraph);
-        console.log(found);
+    /*  addData = {
+      country: country.country,
+    }; */
+    console.log(addData);
+  }
+
+  //Update stats for clicked country
+  updateStats(data) {
+    this.wrapper.addEventListener('click', (e) => {
+      if (
+        e.target.className === 'wrapper__country-paragraph' ||
+        e.target.className === 'wrapper__country-img'
+      ) {
+        data.forEach((country) => {
+          console.log(e.target);
+          if (e.target.textContent === country.country) {
+            this.statsCountry.textContent = this.formatNumbers(country.country);
+            this.totalCases.textContent = this.formatNumbers(country.cases);
+            if (country.recovered !== null) {
+              this.totalRecovered.textContent = this.formatNumbers(
+                country.recovered
+              );
+            } else {
+              this.totalRecovered.textContent = 'Unknown';
+            }
+            this.totalDeaths.textContent = this.formatNumbers(country.deaths);
+          }
+        });
       }
     });
   }

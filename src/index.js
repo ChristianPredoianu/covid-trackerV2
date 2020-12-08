@@ -6,14 +6,19 @@ import Ui from './ui';
 const covidData = new CovidData();
 const ui = new Ui();
 
-//Initialize app with default world data
+//Initialize app with default world data & top ten countries
 function initApp() {
   covidData.getData().then((data) => {
     document.addEventListener('DOMContentLoaded', ui.updateInitialUi(data));
-    ui.createCountryCards(data);
-    const input = document.querySelector('.wrapper__input');
-    ui.filterCountries(data);
-    console.log(data);
+
+    document.querySelector('.wrapper__input').addEventListener('keyup', (e) => {
+      let search = e.target.value;
+      ui.filterData(data, search);
+      ui.updateStats(data);
+    });
+
+    ui.showData(data);
+    ui.updateStats(data);
   });
 }
 

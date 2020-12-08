@@ -140,7 +140,9 @@ html {
   justify-content: space-between;
   margin: 0 auto;
   width: 90%;
+  max-height: 800px;
   margin-top: 10rem;
+  margin-bottom: 50rem;
 
   &__container-left {
     background-color: #fff;
@@ -222,7 +224,9 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 800px;
   padding: 2rem 0;
+  overflow-y: scroll;
 
   &__input {
     width: 90%;
@@ -230,6 +234,13 @@ html {
     border: 0.1rem solid rgb(211, 211, 211);
     border-radius: 0.5rem;
     outline: none;
+  }
+
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__country-box {
@@ -240,6 +251,7 @@ html {
     padding: 1rem;
     border-radius: 1rem;
     background-color: #cfcfcf;
+    cursor: pointer;
   }
 
   &__country-img {
