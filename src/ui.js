@@ -9,9 +9,8 @@ export default class Ui {
     this.intensiveCare = document.querySelector('#intensive-care');
     this.casesPerMil = document.querySelector('#cases-mil');
     this.deathsPerMil = document.querySelector('#deaths-mil');
-    this.wrapper = document.querySelector('#wrapper');
-    this.wrapperInner = document.querySelector('.wrapper__inner');
-    this.input = document.querySelector('.wrapper__input');
+    this.activeCases = document.querySelector('#active-cases');
+    this.containerCountries = document.querySelector('.container-countries');
   }
 
   //Update initial Ui
@@ -29,11 +28,45 @@ export default class Ui {
     this.deathsPerMil.textContent = this.formatNumbers(
       data[0].deathsPerOneMillion
     );
+    this.activeCases.textContent = this.formatNumbers(data[0].active);
+  }
+
+  //Create the country card
+  createCard(country) {
+    const card = document.createElement('div');
+    card.classList.add('country-card');
+    this.containerCountries.appendChild(card);
+    const img = document.createElement('IMG');
+    img.classList.add('country-card__img');
+    if (
+      country.country === 'World' ||
+      country.country === 'Guadeloupe' ||
+      country.country === 'Réunion' ||
+      country.country === 'Guyana' ||
+      country.country === 'Mayotte' ||
+      country.country === 'Channel Islands' ||
+      country.country === 'Sint Maarten' ||
+      country.country === 'Diamond Princess' ||
+      country.country === 'Saint Lucia' ||
+      country.country === 'Caribbean Netherlands' ||
+      country.country === 'New Caledonia' ||
+      country.country === 'Saint Pierre Miquelon' ||
+      country.country === 'Wallis and Futuna' ||
+      country.country === 'MS Zaandam'
+    ) {
+      img.src = `../dist/img/src/images/World.png`;
+    } else {
+      img.src = `../dist/img/src/images/flags/${country.country}.svg`;
+    }
+    card.appendChild(img);
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('country-card__paragraph');
+    paragraph.textContent = country.country;
+    card.appendChild(paragraph);
   }
 
   //Show all countries
   showData(data) {
-    console.log(data);
     data.forEach((country) => {
       this.createCard(country);
     });
@@ -41,7 +74,7 @@ export default class Ui {
 
   //Show filtered countries
   filterData(data, search) {
-    this.wrapperInner.innerHTML = '';
+    this.containerCountries.innerHTML = '';
     let filtered = data.filter((country) => {
       return country.country.toLowerCase().includes(search.toLowerCase());
     });
@@ -50,40 +83,16 @@ export default class Ui {
     });
   }
 
-  //Create the country card
-  createCard(country) {
-    let addData = {};
-    let id = 0;
-    const card = document.createElement('div');
-    card.classList.add('wrapper__country-box');
-    this.wrapperInner.appendChild(card);
-    const img = document.createElement('IMG');
-    img.classList.add('wrapper__country-img');
-    if (country.country === 'World') {
-      img.src = `../dist/img/src/images/World.png`;
-    } else {
-      img.src = `../dist/img/src/images/flags/${country.country}.svg`;
-    }
-    card.appendChild(img);
-    const paragraph = document.createElement('p');
-    paragraph.classList.add('wrapper__country-paragraph');
-    paragraph.textContent = country.country;
-    card.appendChild(paragraph);
-
-    /*  addData = {
-      country: country.country,
-    }; */
-    console.log(addData);
-  }
-
   //Update stats for clicked country
   updateStats(data) {
-    this.wrapper.addEventListener('click', (e) => {
+    this.containerCountries.addEventListener('click', (e) => {
       if (
-        e.target.className === 'wrapper__country-paragraph' ||
-        e.target.className === 'wrapper__country-img'
+        e.target.className === 'country-card' ||
+        e.target.className === 'country-card__img' ||
+        e.target.className === 'country-card__paragraph'
       ) {
         data.forEach((country) => {
+          console.log(data);
           console.log(e.target);
           if (e.target.textContent === country.country) {
             this.statsCountry.textContent = this.formatNumbers(country.country);
@@ -96,6 +105,22 @@ export default class Ui {
               this.totalRecovered.textContent = 'Unknown';
             }
             this.totalDeaths.textContent = this.formatNumbers(country.deaths);
+            this.casesToday.textContent = this.formatNumbers(
+              country.todayCases
+            );
+            this.deathsToday.textContent = this.formatNumbers(
+              country.todayDeaths
+            );
+            this.intensiveCare.textContent = this.formatNumbers(
+              country.critical
+            );
+            this.casesPerMil.textContent = this.formatNumbers(
+              country.casesPerOneMillion
+            );
+            this.deathsPerMil.textContent = this.formatNumbers(
+              country.deathsPerOneMillion
+            );
+            this.activeCases.textContent = this.formatNumbers(country.active);
           }
         });
       }

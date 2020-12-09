@@ -6,17 +6,15 @@ import Ui from './ui';
 const covidData = new CovidData();
 const ui = new Ui();
 
-//Initialize app with default world data & top ten countries
+//Initialize app with default world data, countries & filter
 function initApp() {
   covidData.getData().then((data) => {
     document.addEventListener('DOMContentLoaded', ui.updateInitialUi(data));
-
-    document.querySelector('.wrapper__input').addEventListener('keyup', (e) => {
+    document.querySelector('.input').addEventListener('keyup', (e) => {
       let search = e.target.value;
       ui.filterData(data, search);
       ui.updateStats(data);
     });
-
     ui.showData(data);
     ui.updateStats(data);
   });
