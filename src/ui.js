@@ -120,7 +120,11 @@ export default class Ui {
             this.deathsPerMil.textContent = this.formatNumbers(
               country.deathsPerOneMillion
             );
-            this.activeCases.textContent = this.formatNumbers(country.active);
+            if (country.active !== null) {
+              this.activeCases.textContent = this.formatNumbers(country.active);
+            } else {
+              this.activeCases.textContent = 'Unknown';
+            }
           }
         });
       }

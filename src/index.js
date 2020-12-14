@@ -17,6 +17,7 @@ function initApp() {
     });
     ui.showData(data);
     ui.updateStats(data);
+    console.log(data);
   });
 }
 
