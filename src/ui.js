@@ -54,9 +54,9 @@ export default class Ui {
       country.country === 'Wallis and Futuna' ||
       country.country === 'MS Zaandam'
     ) {
-      img.src = `../dist/img/src/images/World.png`;
+      img.src = `img/src/images/world.png`;
     } else {
-      img.src = `../dist/img/src/images/flags/${country.country}.svg`;
+      img.src = `img/src/images/flags/${country.country}.svg`;
     }
     card.appendChild(img);
     const paragraph = document.createElement('p');
