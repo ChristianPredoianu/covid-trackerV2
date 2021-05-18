@@ -32,32 +32,13 @@ export default class Ui {
   }
 
   //Create the country card
-  createCard(country) {
+  createCountryCard(country) {
     const card = document.createElement('div');
     card.classList.add('country-card');
     this.containerCountries.appendChild(card);
     const img = document.createElement('IMG');
     img.classList.add('country-card__img');
-    if (
-      country.country === 'World' ||
-      country.country === 'Guadeloupe' ||
-      country.country === 'Réunion' ||
-      country.country === 'Guyana' ||
-      country.country === 'Mayotte' ||
-      country.country === 'Channel Islands' ||
-      country.country === 'Sint Maarten' ||
-      country.country === 'Diamond Princess' ||
-      country.country === 'Saint Lucia' ||
-      country.country === 'Caribbean Netherlands' ||
-      country.country === 'New Caledonia' ||
-      country.country === 'Saint Pierre Miquelon' ||
-      country.country === 'Wallis and Futuna' ||
-      country.country === 'MS Zaandam'
-    ) {
-      img.src = `img/src/images/world.png`;
-    } else {
-      img.src = `img/src/images/flags/${country.country}.svg`;
-    }
+    this.setImgSrc(country, img);
     card.appendChild(img);
     const paragraph = document.createElement('p');
     paragraph.classList.add('country-card__paragraph');
@@ -65,21 +46,51 @@ export default class Ui {
     card.appendChild(paragraph);
   }
 
+  //Set the img src for country card - No flags avaliable for countries in if statement - default flag World
+  setImgSrc(country, img) {
+    if (
+      country.country === 'World' ||
+      country.country === 'Guadeloupe' ||
+      country.country === 'Réunion' ||
+      country.country === 'Mayotte' ||
+      country.country === 'Channel Islands' ||
+      country.country === 'Diamond Princess' ||
+      country.country === 'Caribbean Netherlands' ||
+      country.country === 'New Caledonia' ||
+      country.country === 'Saint Pierre Miquelon' ||
+      country.country === 'Wallis and Futuna' ||
+      country.country === 'MS Zaandam' ||
+      country.country === 'Saint Helena'
+    ) {
+      img.src = `img/src/images/world.png`;
+    } else {
+      img.src = `img/src/images/flags/${country.country}.svg`;
+    }
+  }
+
   //Show all countries
-  showData(data) {
+  showCountryCards(data) {
     data.forEach((country) => {
-      this.createCard(country);
+      this.createCountryCard(country);
     });
   }
 
   //Show filtered countries
-  filterData(data, search) {
-    this.containerCountries.innerHTML = '';
-    let filtered = data.filter((country) => {
-      return country.country.toLowerCase().includes(search.toLowerCase());
+  filterCountryCards(data) {
+    document.querySelector('.input').addEventListener('keyup', (e) => {
+      const search = e.target.value;
+      this.containerCountries.innerHTML = '';
+      const filtered = data.filter((country) => {
+        return country.country.toLowerCase().includes(search.toLowerCase());
+      });
+      this.showFilteredCountryCards(filtered);
     });
+  }
+
+  //Show filtered country cards
+  showFilteredCountryCards(filtered) {
     filtered.forEach((country) => {
-      this.createCard(country);
+      this.createCountryCard(country);
     });
   }
 
@@ -91,44 +102,34 @@ export default class Ui {
         e.target.className === 'country-card__img' ||
         e.target.className === 'country-card__paragraph'
       ) {
-        data.forEach((country) => {
-          console.log(data);
-          console.log(e.target);
+        data.find((country) => {
           if (e.target.textContent === country.country) {
-            this.statsCountry.textContent = this.formatNumbers(country.country);
-            this.totalCases.textContent = this.formatNumbers(country.cases);
-            if (country.recovered !== null) {
-              this.totalRecovered.textContent = this.formatNumbers(
-                country.recovered
-              );
-            } else {
-              this.totalRecovered.textContent = 'Unknown';
-            }
-            this.totalDeaths.textContent = this.formatNumbers(country.deaths);
-            this.casesToday.textContent = this.formatNumbers(
-              country.todayCases
-            );
-            this.deathsToday.textContent = this.formatNumbers(
-              country.todayDeaths
-            );
-            this.intensiveCare.textContent = this.formatNumbers(
-              country.critical
-            );
-            this.casesPerMil.textContent = this.formatNumbers(
-              country.casesPerOneMillion
-            );
-            this.deathsPerMil.textContent = this.formatNumbers(
-              country.deathsPerOneMillion
-            );
-            if (country.active !== null) {
-              this.activeCases.textContent = this.formatNumbers(country.active);
-            } else {
-              this.activeCases.textContent = 'Unknown';
-            }
+            this.updateMainStats(country);
+            this.updateAdditionalStats(country);
           }
         });
       }
     });
+  }
+
+  updateMainStats(country) {
+    this.statsCountry.textContent = country.country;
+    this.totalCases.textContent = this.formatNumbers(country.cases);
+    this.totalRecovered.textContent = this.formatNumbers(country.recovered);
+    this.totalDeaths.textContent = this.formatNumbers(country.deaths);
+  }
+
+  updateAdditionalStats(country) {
+    this.casesToday.textContent = this.formatNumbers(country.todayCases);
+    this.deathsToday.textContent = this.formatNumbers(country.todayDeaths);
+    this.intensiveCare.textContent = this.formatNumbers(country.critical);
+    this.casesPerMil.textContent = this.formatNumbers(
+      country.casesPerOneMillion
+    );
+    this.deathsPerMil.textContent = this.formatNumbers(
+      country.deathsPerOneMillion
+    );
+    this.activeCases.textContent = this.formatNumbers(country.active);
   }
 
   //Format data with commas
