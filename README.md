@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ChristianPredoianu/netflix-clone-vue">
-    <img src="src/assets/images/netclone.png" alt="Logo" width="80" height="80">
+    <img src="dist/img/src/images/red-covid19.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Netflix Clone Vue</h3>
