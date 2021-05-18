@@ -2,21 +2,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/ChristianPredoianu/netflix-clone-vue">
+  <a href="https://github.com/ChristianPredoianu/covid-trackerV2/">
     <img src="dist/img/src/images/red-covid19.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Netflix Clone Vue</h3>
+  <h3 align="center">Covid tracker V2</h3>
 
   <p align="center">
-   A Netflix clone to mimic Netflix functionality. Made with Vue.js 
+   A Covid tracker to track world stats. Made with Vanilla.js (classes) 
     <br />
-    <a href="https://github.com/ChristianPredoianu/netflix-clone-vue"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ChristianPredoianu/covid-trackerV2/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://netclonevue.netlify.app/">View Demo</a>
+    <a href="https://covid19trackerv2.netlify.app//">View Demo</a>
     ·
-    <a href="https://github.com/ChristianPredoianu/netflix-clone-vue/issues/issues">Report Bug</a>
+    <a href="https://github.com/ChristianPredoianu/covid-trackerV2/issues">Report Bug</a>
     ·
    
   </p>
@@ -53,15 +53,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is made to mimic some of netflix functionality.
+This project is made to show world stats about Covid-19.
 
 ### Built With
 
-* [Vue.js](https://vuejs.org/)
-* [Firebase](https://firebase.google.com/)
+* [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Webpack](https://webpack.js.org/)
+* [Html5](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [Css3](https://www.w3.org/Style/CSS/Overview.en.html)
 * [Sass](https://sass-lang.com/)
-* [Css](https://www.w3.org/Style/CSS/Overview.en.html)
-* [HTML](https://developer.mozilla.org/sv-SE/docs/Web/HTML)
 
 
 
@@ -81,7 +81,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/ChristianPredoianu/netflix-clone-vue.git
+   git clone https://github.com/ChristianPredoianu/covid-trackerV2.git
    ```
 2. Install NPM packages
    ```sh
@@ -90,7 +90,11 @@ To get a local copy up and running follow these simple steps.
    
 3. Run dev server
    ```sh
-   npm run serve
+   npm run start:dev
+   ```
+4. Watch dev server
+   ```sh
+   npm run watch
    ```
 
 
@@ -99,15 +103,7 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To start using Netclone you have two options:
-
-1.1 Sign in to Netclone with an existing account for demo purposes https://netclonevue.netlify.app/signIn:<br/>
-    <b>Username</b>: test@test.com  
-    <b>Password:</b> testingnetclone
-    => choose an existing profile
-   
-1.2 Signup to Netclone with a <b>dummy email</b> made up by you. E.g (john@whatever.com) It doesn't need to be a valid email. And choose a <b>password.</b> 
-    => Add a profile and continue with the selected profile.
+Search for a country, select prefered country and read the stats.
 
 
 
@@ -122,17 +118,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Christian Predoianu - [@linkedin](https://se.linkedin.com/in/christian-predoianu-369218157) - christianpredoianu@yahoo.com
 
-Project Link: [https://github.com/ChristianPredoianu/netflix-clone-vue](https://github.com/ChristianPredoianu/netflix-clone-vue)
+Project Link: [https://github.com/ChristianPredoianu/covid-trackerV2](https://github.com/ChristianPredoianu/covid-trackerV2)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [Vue Awesome Swiper](https://github.com/surmon-china/vue-awesome-swiper)
-* [Vue Simple Accordion](https://github.com/tkhquang/vue-simple-accordion)
-* [Vuex Persisted State](https://github.com/robinvdvleuten/vuex-persistedstate)
-* [Font-Awesome](https://fontawesome.com/)
+* [Icons made by Freepik from www.flaticon.com](https://www.flaticon.com/authors/freepik)
+
 
 
 
