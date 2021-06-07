@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ChristianPredoianu/covid-trackerV2/">
-    <img src="dist/img/src/images/red-covid19.png" alt="Logo" width="80" height="80">
+    <img src="src/images/red-covid19.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Covid tracker V2</h3>
